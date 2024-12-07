@@ -5,7 +5,7 @@ const movieSchema=mongoose.Schema({
     // Image:{type:File, required:false},
     duration:{type:Number, required:true},
     director: {type:String, required:true},
-    releaseYear: {type:Number, required:true},
+    releaseDate: {type:String, required:true},
     genre: {type:String, required:true},
     languages:[{type:String, required:true}],
     casts: [{type:String, required:true}],

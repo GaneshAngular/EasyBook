@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-
+import cors from "cors";
 import dotenv from "dotenv";
 import { movieRouter } from "./routes/movieRoute.js";
 import { theaterRouter } from "./routes/theaterRoute.js";
@@ -20,7 +20,7 @@ mongoose
 
 const app = express();
 app.use(express.json());
-
+ app.use(cors())
 app.use("/movies", movieRouter);
 app.use("/theater", theaterRouter);
 app.use("/user", UserRouter);
