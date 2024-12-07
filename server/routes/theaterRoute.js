@@ -1,5 +1,5 @@
 import express from "express";
-import { addTheater, deleteTheater, getTheaters, getTheatersById, getTheatersByMovie, updateTheater } from "../controller/theater.js";
+import { addTheater, deleteTheater, getTheaters, getTheatersById, getTheatersByMovie, updateTheater } from "../controller/theaterController.js";
 
 const theaterRouter = express.Router();
 

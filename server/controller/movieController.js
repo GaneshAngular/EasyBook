@@ -1,4 +1,4 @@
-import { movieModel } from "../model/movie.js"
+import { movieModel } from "../model/movieModel.js"
 
 const getMovies= async(req,res)=>{
     return res.send(await movieModel.find({}))

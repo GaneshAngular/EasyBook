@@ -1,4 +1,4 @@
-import {theaterModel} from '../model/theater.js'
+import {theaterModel} from '../model/theaterModel.js'
 
 
 

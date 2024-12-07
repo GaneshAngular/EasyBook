@@ -1,6 +1,6 @@
 import express from "express";
 
-import { createMovie, getMovies, getMoviesById, updateMovie } from "../controller/movie.js";
+import { createMovie, getMovies, getMoviesById, updateMovie } from "../controller/movieController.js";
 import { deleteModel } from "mongoose";
 
 const movieRouter = express.Router();
