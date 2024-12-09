@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { MoviesComponent } from './home/movies/movies.component';
 import { MovieComponent } from './shared/movie/movie.component';
 import { TheaterComponent } from './home/theater/theater.component';
+import { ShowsComponent } from './home/shows/shows.component';
 
 export const routes: Routes = [
     {
@@ -16,7 +17,7 @@ export const routes: Routes = [
         path:'movies/:id',
         component:MovieComponent
     },{
-        path:'theater',
-        component:TheaterComponent
+        path:'shows/:id',
+        component:ShowsComponent
     }
 ];

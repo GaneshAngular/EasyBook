@@ -1,3 +1,4 @@
+import { showsModel } from '../model/showsModel.js'
 import {theaterModel} from '../model/theaterModel.js'
 
 
@@ -30,6 +31,22 @@ const getTheatersById=async(req,res)=>{
     return res.send(await theaterModel.findById(id))
 }
 
+const getTheatersByMovieandCity=async(req,res)=>{
+    const id=req.params.id
+    const city=req.params.city
+    const theaterId=[]
+     let data=await showsModel.find({city,movie_id:id})
+     data.map(show=>!theaterId.includes(show.theater_id) && theaterId.push(show.theater_id) )
+     
+     data=theaterId.map((id)=>{
+         return  theaterModel.findById(id)
+     })
+     data=await Promise.all(data)
+   
+
+     return res.send(data)
+    }
+   
 const updateTheater=async(req,res)=>{
 
 }
@@ -38,4 +55,4 @@ const deleteTheater=async(req,res)=>{
 
 }
 
-export{getTheaters, addTheater, getTheatersById, updateTheater, deleteTheater,getTheatersByMovie}
+export{getTheaters, addTheater, getTheatersById, updateTheater, deleteTheater,getTheatersByMovie,getTheatersByMovieandCity}

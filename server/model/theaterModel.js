@@ -8,7 +8,7 @@ const theaterSchema=mongoose.Schema({
     address: {type:String, required:true},
     city:{type:String, required:true},
     screeens:[{type:String, required:true}],
-    timings: [{type:Number, required:true}],
+    timings: [{type:String, required:true}],
     Seats:[{type:seat, required:true}],
     movies_id:[{type:String, required:true}]
 })

@@ -10,10 +10,11 @@ const MOVIE_URLS={
 }
 
 const THEATER_URLS={
-  getTheaters:'/theaters/',
-  getTheater:'/theaters/',
-  updateTheater:'/theaters',
-  deleteTheater:'/theaters/'
+  getTheaters:'/theater/',
+  getTheater:'/theater/',
+  updateTheater:'/theater',
+  deleteTheater:'/theater/',
+  getTheatersByCityAndMovie:'/theater/theater/'
 
 }
 

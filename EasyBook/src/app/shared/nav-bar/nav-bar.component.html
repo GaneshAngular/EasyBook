@@ -14,15 +14,11 @@
       <!-- Navbar Links -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
+         
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+            <a class="nav-link active" routerLink="/movies">Movies</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/movies">Movies</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/theater">Theaters</a>
-          </li>
+          
         </ul>
 
         <!-- User Actions -->
@@ -32,8 +28,8 @@
           </li> -->
           <li class="nav-item d-flex gap-2 align-items-center">
               <i  class="fa fa-location-dot text-white"></i>
-                <select name="city" class="form-select p-0 " id="city" (change)="setCity()" [(ngModel)]="city">
-                  <option value="">Select city</option>
+                <select name="city" class="form-select py-0" id="city" (change)="setCity()" [(ngModel)]="city">
+                  <option value="" disabled selected>Select city</option>
                   <option *ngFor="let item of cities" value="{{item}}">{{item}}</option>
                 </select>
           </li>

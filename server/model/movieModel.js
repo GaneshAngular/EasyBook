@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const movieSchema=mongoose.Schema({
     title: {type:String, required:true},
     // Image:{type:File, required:false},
+    poster:{type:String, required:true},
     duration:{type:Number, required:true},
     director: {type:String, required:true},
     releaseDate: {type:String, required:true},

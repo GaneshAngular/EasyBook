@@ -4,6 +4,7 @@ import { MovieService } from '../../core/services/movie/movie.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import city from '../../core/constants/cities';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -14,33 +15,33 @@ import city from '../../core/constants/cities';
 })
 export class MoviesComponent {
 
+
   movies:any[]=[]
    cityList:any[]=city
    city:string=''
-   constructor(private showsService:MovieService){
-    showsService.city.asObservable().subscribe(data=>{
-      console.log(data);
+   constructor(private movieService:MovieService,private router:Router){
+    movieService.city.asObservable().subscribe(data=>{
       this.city=data;
-      console.log(this.city);
-      
+       this.getMovies() 
     })
-  
-    this.getMovies()
-     
    }
     
    getMovies(){
-    this.showsService.getMovies().subscribe((data:any)=>{
-      console.log(data);
+    this.movieService.getMovies().subscribe((data:any)=>{
        this.movies=data;
      })
    }
 
    setCity(city:string){
     localStorage.setItem('city',city)
-    this.getMovies()
+    this.movieService.city.next(city)
+    console.log(city);
     
    }
+
+   getMovieDetails(id:string) {
+        this.router.navigate(['/movies/'+id])
+    }
 
 
 }
