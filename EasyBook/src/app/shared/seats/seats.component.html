@@ -1,0 +1,30 @@
+<div class="movie-container">
+    
+  <ul class="showcase col-md-3 mx-auto"  >
+    <li>
+      <div class="seat"></div>
+      <small>Available</small>
+    </li>
+    <li>
+      <div class="seat selected"></div>
+      <small>Selected</small>
+    </li>
+    <li>
+      <div class="seat occupied"></div>
+      <small>Occupied</small>
+    </li>
+  </ul>
+  
+  <div class="container col-md-3 mx-auto">
+    <div class="screen mx-auto"></div>
+    <div *ngFor="let item of show[0]?.theater_id?.Seats" class="row mx-auto">
+      <div class="row-label">{{ item.row }}</div>
+      <button *ngFor="let seat of item.seatNumber" id="{{item.row+seat}}"  [disabled]="isSeatFilled(item.row, seat)"  [class.occupied]="isSeatFilled(item.row, seat)" (click)="toggleSeat(item.row + seat)" class="seat"> 
+      </button>
+    </div>
+
+    <button class="btn btn-danger mt-5" (click)="confirmSeats()">Confirm</button>
+  </div>
+
+  
+

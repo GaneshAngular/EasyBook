@@ -25,6 +25,6 @@ export class MovieComponent {
   }
 
   bookTicket(id:string){
-    this.router.navigate(['shows/'+id])
+    this.router.navigate(['user/shows/'+id])
   }
 }

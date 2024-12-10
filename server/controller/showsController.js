@@ -2,7 +2,8 @@ import { showsModel } from "../model/showsModel.js"
 
 
 const getShows=async(req,res)=>{
-        return res.send(await showsModel.find({}).populate('prices'))
+      const shows=await showsModel.find({}).populate('movie_id').populate('theater_id')
+        return res.send(shows)
 }
 
 const organiseShow=async(req,res)=>{
@@ -12,11 +13,17 @@ const organiseShow=async(req,res)=>{
       return res.status(201).json(response)
 
 }
+const getShowsByTime=async(req,res)=>{
+      const time=req.params.time
+      const tid=req.params.tid
+      const mid=req.params.mid
+      return res.send(await showsModel.find({time:time,theater_id:tid,movie_id:mid}).populate('movie_id').populate('theater_id'))
+}
 const getShowsByMovie=async(req,res)=>{
     const id=req.params.id
       return res.send(await showsModel.find({movie_id:id}))
 }
-
+      
 const getShowsByTheater=async(req,res)=>{
       const id=req.params.id
       return res.send(await showsModel.find({theater_id:id}))
@@ -30,9 +37,16 @@ const getShowsByDate=async(req,res)=>{
 const deleteShow=async(req,res)=>{
       const id=req.params.id
      const respons= await showsModel.findByIdAndDelete(id)
-     console.log(respons);
+    
      
       return res.status(204).send("Show deleted")
+}
+const updateShow=async(req,res)=>{
+      const id=req.params.id
+      const respons= await showsModel.findByIdAndUpdate(id,req.body)
+    
+     
+      return res.status(204).send("Show Updated")
 }
 
 export{
@@ -41,5 +55,7 @@ export{
     getShowsByTheater,
     getShowsByDate,
     getShowsByMovie,
-    deleteShow
+    deleteShow,
+    getShowsByTime,
+    updateShow
 }

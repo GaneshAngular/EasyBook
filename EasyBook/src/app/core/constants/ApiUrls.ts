@@ -21,7 +21,7 @@ const THEATER_URLS={
 const SHOWS_URL={
     getShows:'/shows/',
     getShow:'/shows/',
-    updateShow:'/shows',
+    updateShow:'/shows/',
     deleteShow:'/shows/'
 }
 

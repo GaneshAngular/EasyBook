@@ -2,7 +2,7 @@
 <div class="movie_card" id="bright">
     <div class="info_section d-flex flex-column justify-content-evenly">
       <div class="movie_header ">
-        <img class="locandina" src="/images/{{movieData?.poster}}"/>
+        <img class="locandina" src="{{movieData?.poster}}"/>
         <h1>{{movieData?.title | titlecase}}</h1>
         <h4>{{movieData?.releaseDate | date:'YYYY'}},{{ movieData?.casts[0]}}</h4>
         <span class="minutes">{{movieData?.duration}} min</span>

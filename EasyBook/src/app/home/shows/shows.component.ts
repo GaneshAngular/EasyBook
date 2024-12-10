@@ -10,28 +10,34 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-shows',
   standalone: true,
   imports: [CommonModule,FormsModule],
-  templateUrl: './shows.component.html',
+
+templateUrl: './shows.component.html',
   styleUrl: './shows.component.css'
 })
 export class ShowsComponent {
+
    movieData:any
 id:string = ''
+city=''
 theaters:any[]=[]
   constructor(private theaterService:TheaterService,private router:Router,private movieService:MovieService){
            const url= this.router.url.split('/')
             this.id=url[url.length-1]
             this.movieService.getMoviesById(this.id).subscribe(movies =>this.movieData=movies)
             this.movieService.city.asObservable().subscribe(city =>{
+              this.city=city;
               this.getTheatersByCityAndMovie()
             })
-          this.getTheatersByCityAndMovie()
+            
   }
 
   getTheatersByCityAndMovie(){
       this.theaterService.getTheatersByCity(this.id).subscribe((theaters:any)=>{
        const data=theaters
+       console.log(theaters);
+       
        this.theaters=data
-       console.log(this.theaters);
+     
        
       }),(err:any)=>{
         console.log(err);
@@ -40,4 +46,8 @@ theaters:any[]=[]
       
       
   }
+
+  bookSeats(theater_id:any,movie_id:any,time:any) {
+           this.router.navigate([`user/seats/${theater_id}/${movie_id}/${time}`])
+    }
 }

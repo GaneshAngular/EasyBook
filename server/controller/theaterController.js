@@ -33,9 +33,12 @@ const getTheatersById=async(req,res)=>{
 
 const getTheatersByMovieandCity=async(req,res)=>{
     const id=req.params.id
-    const city=req.params.city
+    const cityn=req.params.city
     const theaterId=[]
-     let data=await showsModel.find({city,movie_id:id})
+    
+     let data=await showsModel.find({city:cityn, movie_id:id})
+     console.log(data);
+     
      data.map(show=>!theaterId.includes(show.theater_id) && theaterId.push(show.theater_id) )
      
      data=theaterId.map((id)=>{
@@ -43,7 +46,7 @@ const getTheatersByMovieandCity=async(req,res)=>{
      })
      data=await Promise.all(data)
    
-
+    
      return res.send(data)
     }
    

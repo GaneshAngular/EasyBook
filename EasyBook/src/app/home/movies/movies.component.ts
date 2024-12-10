@@ -40,7 +40,7 @@ export class MoviesComponent {
    }
 
    getMovieDetails(id:string) {
-        this.router.navigate(['/movies/'+id])
+        this.router.navigate(['user/movies/'+id])
     }
 
 

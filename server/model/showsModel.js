@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
 
 const price=mongoose.Schema({
@@ -8,9 +8,8 @@ const price=mongoose.Schema({
 ,
 { _id: false })
 const showsSchema=mongoose.Schema({
-    movie_id:{type:String, required:true},
-    theater_id:{type:String, required:true},
-    screenType: {type:String, required:true},
+    movie_id:{type:mongoose.Schema.Types.ObjectId,ref:'movie', required:true},
+    theater_id:{type:mongoose.Schema.Types.ObjectId,ref:'theaters', required:true},
     date:{type:String, required:true},
     time:{type:String, required:true},
     city:{type:String, required:true},

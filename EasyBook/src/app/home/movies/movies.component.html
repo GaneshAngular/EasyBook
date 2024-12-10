@@ -13,7 +13,7 @@
   <div class="row gap-5">
     <div *ngFor="let item of movies" class="card col-md-3 col-sm-2 " style="width: 18rem">
       <img
-        src="/images/{{item?.poster}}"
+        src="{{item?.poster}}"
         (click)="getMovieDetails(item._id)"
         class=" img-fluid"
         alt="Movie Poster"

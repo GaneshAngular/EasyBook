@@ -12,4 +12,16 @@ export class ShowsService {
    getShows(){
       return this.http.get(SHOWS_URL.getShows) 
    }
+
+   createShow(data:any){
+     return this.http.post(SHOWS_URL.getShows,data)
+   }
+
+   getShowByTimeAndMovieAndTheater(url:string){
+     return this.http.get(SHOWS_URL.getShows+url)
+   }
+
+   updateShow(showId:string, data:any){
+     return this.http.patch(SHOWS_URL.updateShow+showId, data)
+   }
 }

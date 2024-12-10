@@ -15,4 +15,11 @@ export class TheaterService {
    getTheatersByCity(id:string){
       return this.http.get(THEATER_URLS.getTheatersByCityAndMovie+id+"/"+this.city)
    }
+
+   getTheaters(){
+      return this.http.get(THEATER_URLS.getTheaters)
+   }
+   getTheaterById(id:string){
+     return this.http.get(THEATER_URLS.getTheater+id)
+   }
 }
