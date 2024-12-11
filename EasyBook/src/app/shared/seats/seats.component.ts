@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class SeatsComponent {
 
 show:any
+
 selectedSeats:any[]=[]
        constructor(private router:Router,private showsService:ShowsService){
            const url= this.router.url.split('/')
@@ -24,8 +25,7 @@ selectedSeats:any[]=[]
            
            this.showsService.getShowByTimeAndMovieAndTheater(`book/${tid}/${mid}/${time}`).subscribe(show=>{
             this.show=show
-            console.log(this.show);
-           
+    
           })
             
        }

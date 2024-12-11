@@ -21,12 +21,12 @@ const getShowsByTime=async(req,res)=>{
 }
 const getShowsByMovie=async(req,res)=>{
     const id=req.params.id
-      return res.send(await showsModel.find({movie_id:id}))
+      return res.send(await showsModel.find({movie_id:id}.populate('movie_id')))
 }
       
 const getShowsByTheater=async(req,res)=>{
       const id=req.params.id
-      return res.send(await showsModel.find({theater_id:id}))
+      return res.send(await showsModel.find({theater_id:id}.populate('theater_id')))
 }
 
 const getShowsByDate=async(req,res)=>{
@@ -48,6 +48,12 @@ const updateShow=async(req,res)=>{
      
       return res.status(204).send("Show Updated")
 }
+const getShowsByMovieCityTheater=async(req,res)=>{
+      const mid=req.params.mid
+      const tid=req.params.tid
+      const city=req.params.city
+      return res.send(await showsModel.find({movie_id:mid,theater_id:tid,city:city}).populate('movie_id').populate('theater_id'))
+}
 
 export{
     getShows,
@@ -57,5 +63,6 @@ export{
     getShowsByMovie,
     deleteShow,
     getShowsByTime,
-    updateShow
+    updateShow,
+    getShowsByMovieCityTheater
 }

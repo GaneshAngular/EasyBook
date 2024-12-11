@@ -1,4 +1,5 @@
 
+import { log } from "console"
 import { movieModel } from "../model/movieModel.js"
 import { showsModel } from "../model/showsModel.js"
 const getMovies= async(req,res)=>{
@@ -14,18 +15,21 @@ const getMoviesById= async(req,res)=>{
 return res.send(movie)
 }
 const getMoviesByCity=async(req,res)=>{
-    const id=req.params.id
+    
     const city=req.params.city
-    const shows= await showsModel.find({city:city,movie_id:id}) 
+    const shows= await showsModel.find({city:city}).populate('movie_id') 
     
     let ids=[]
     if(shows.length){
+    
          shows.forEach((show)=>{
              !ids.includes(show.movie_id)&&ids.push(show.movie_id)
          })
-         const moviePromises = ids.map((movie_id) => movieModel.findById(movie_id));
-       const movies = await Promise.all(moviePromises);
-         return res.send(movies)
+         
+         
+    //      const moviePromises = ids.map((movie_id) => movieModel.findById(movie_id));
+    //    const movies = await Promise.all(moviePromises);
+         return res.send(ids)
      }
     shows.length==0&& res.send("no Movies screenings available")
     }
@@ -37,11 +41,11 @@ const createMovie= async(req,res)=>{
     const file=req.file || null
     if(file){
         data.poster= file.originalname
-        console.log(file.filename);
+        
 
     }
     movieModel.create(data)
-    console.log(data);
+   
    return res.send("movie created")
 }
 
@@ -51,7 +55,7 @@ const updateMovie=async(req,res)=>{
     if(!response.length){
         return res.send("movie Not Found");
     }
-    console.log(response);
+    
     const data=req.body
      await movieModel.findByIdAndUpdate(id,data)
     return res.send("movie updated")

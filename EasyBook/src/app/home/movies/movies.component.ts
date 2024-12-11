@@ -22,7 +22,8 @@ export class MoviesComponent {
    constructor(private movieService:MovieService,private router:Router){
     movieService.city.asObservable().subscribe(data=>{
       this.city=data;
-       this.getMovies() 
+       this.getMoviesByCity()
+ 
     })
    }
     
@@ -31,11 +32,16 @@ export class MoviesComponent {
        this.movies=data;
      })
    }
+   getMoviesByCity(){
+    this.movieService.getMoviesByCity(this.city).subscribe((data:any)=>{
+       this.movies=data;
+     })
+   }
 
    setCity(city:string){
     localStorage.setItem('city',city)
     this.movieService.city.next(city)
-    console.log(city);
+    
     
    }
 

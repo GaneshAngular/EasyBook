@@ -10,7 +10,7 @@ const price=mongoose.Schema({
 const showsSchema=mongoose.Schema({
     movie_id:{type:mongoose.Schema.Types.ObjectId,ref:'movie', required:true},
     theater_id:{type:mongoose.Schema.Types.ObjectId,ref:'theaters', required:true},
-    date:{type:String, required:true},
+    date:{type:Date, required:true},
     time:{type:String, required:true},
     city:{type:String, required:true},
     seatsFilled:[{type:String, required:true}],

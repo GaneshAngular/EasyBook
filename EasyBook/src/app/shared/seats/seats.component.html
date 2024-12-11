@@ -1,5 +1,30 @@
-<div class="movie-container">
-    
+<div  *ngIf="show[0]" class="movie-container">
+     <div class="movie-details my-5">
+      <div class="row justify-content-center">
+        <div class="col-md-2">
+          <img src="{{show[0].movie_id?.poster}}" class="img-fluid" alt="Movie Poster" style="width: 200px;height: 200px;">
+        </div>
+        <div class="col-md-2">
+          <h1>{{show[0].movie_id?.title}}</h1>
+          <p>Release Date: {{show[0].movie_id?.releaseDate}}</p>
+          <p>Genre: {{show[0].movie_id?.genre}}</p>
+          <p>Rating:⭐⭐⭐⭐⭐</p>
+        </div>
+      </div>
+   
+     </div>
+     <div class="theater-details my-5">
+      <div class="row justify-content-center">
+      
+        <div class="col-md-4">
+          <h1 class="text-info">{{show[0]?.theater_id?.name}}</h1>
+          <p>City:{{show[0]?.city}}</p>
+          <p>Address: {{show[0]?.theater_id?.address}}</p>
+          
+        </div>
+      </div>
+   
+     </div>
   <ul class="showcase col-md-3 mx-auto"  >
     <li>
       <div class="seat"></div>
@@ -26,5 +51,8 @@
     <button class="btn btn-danger mt-5" (click)="confirmSeats()">Confirm</button>
   </div>
 
-  
+</div>
 
+<div *ngIf="!show[0]" class="text-center">
+  <h1>No Show Screening</h1>
+</div>

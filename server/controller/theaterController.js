@@ -1,5 +1,6 @@
 import { showsModel } from '../model/showsModel.js'
 import {theaterModel} from '../model/theaterModel.js'
+import { log } from 'console';
 
 
 
@@ -35,19 +36,17 @@ const getTheatersByMovieandCity=async(req,res)=>{
     const id=req.params.id
     const cityn=req.params.city
     const theaterId=[]
-    
-     let data=await showsModel.find({city:cityn, movie_id:id})
-     console.log(data);
-     
+    const today=new Date().toString()
+     let data=await showsModel.find({city:cityn, movie_id:id}).populate('theater_id')
+ 
+        console.log(data);
+        
      data.map(show=>!theaterId.includes(show.theater_id) && theaterId.push(show.theater_id) )
      
-     data=theaterId.map((id)=>{
-         return  theaterModel.findById(id)
-     })
-     data=await Promise.all(data)
+    
    
     
-     return res.send(data)
+     return res.send(theaterId)
     }
    
 const updateTheater=async(req,res)=>{

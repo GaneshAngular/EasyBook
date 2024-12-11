@@ -34,11 +34,8 @@ theaters:any[]=[]
   getTheatersByCityAndMovie(){
       this.theaterService.getTheatersByCity(this.id).subscribe((theaters:any)=>{
        const data=theaters
-       console.log(theaters);
-       
        this.theaters=data
-     
-       
+
       }),(err:any)=>{
         console.log(err);
         

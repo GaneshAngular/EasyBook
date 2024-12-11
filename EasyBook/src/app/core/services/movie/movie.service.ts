@@ -18,5 +18,8 @@ export class MovieService {
    getMoviesById(id:string){
      return this.http.get(MOVIE_URLS.getMovie+id)
    }
+   getMoviesByCity(city:string){
+    return this.http.get(MOVIE_URLS.getMovie+"city/"+city)
+   }
 
 }
