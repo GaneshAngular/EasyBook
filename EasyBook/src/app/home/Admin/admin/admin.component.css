@@ -1,0 +1,4 @@
+li:hover{
+    cursor: pointer;
+    box-shadow: 0 1px 1px gray;
+}

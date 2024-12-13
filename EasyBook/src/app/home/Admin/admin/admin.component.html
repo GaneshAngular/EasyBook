@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 bg-dark text-white" style="min-height: 100vh;">
+            <p class="fs-1 text-center">ADMIN</p>
+             <ul class="border-top list-unstyled text-center  " >
+                <li class="p-4 " routerLink="/admin" >DashBoard</li>
+                <li  class="p-4 " routerLink="/admin/movie">Movies</li>
+                <li  class="p-4 " routerLink="/admin/theater">Theaters</li>
+                <li  class="p-4 " routerLink="/admin/shows">Shows</li>
+             </ul>
+        </div>
+        <div class="col-md-auto">
+              <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

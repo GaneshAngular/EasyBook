@@ -1,0 +1,19 @@
+
+<div class="movie_card" id="bright">
+    <div class="info_section d-flex flex-column justify-content-evenly">
+      <div class="movie_header ">
+        <img class="locandina" src="{{movieData?.poster}}"/>
+        <h1>{{movieData?.title | titlecase}}</h1>
+        <h4>{{movieData?.releaseDate | date:'YYYY'}},{{ movieData?.casts[0]}}</h4>
+        <span class="minutes">{{movieData?.duration}} min</span>
+        <p class="type">{{movieData?.genre}}</p>
+      </div>
+      
+      <div class="movie_social col-md-4 ">
+        <button class="btn btn-danger w-100 " (click)="bookTicket(movieData._id)">Book tickets</button>
+      </div>
+    </div>
+    <div class="blur_back bright_back"></div>
+  </div>
+  
+  

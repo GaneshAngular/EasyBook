@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <div class="modal-dialog modal-xl" [ngClass]="{'hide':city}" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1>Select city</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <button  *ngFor="let item of cityList" class="btn border border-1 rounded-3 shadow-sm " (click)="setCity(item)" >{{item}}</button>
+          </div>
+        </div>
+      </div>
+  <div class="row gap-3">
+    <div class="col-md-12">
+      <h1> <span *ngIf="!movies.length">No</span> Movies in {{city}}</h1>
+    </div>
+    <div *ngFor="let item of movies" class="card col-md-3 col-sm-3 " >
+      <img
+        src="{{item?.poster}}"
+        (click)="getMovieDetails(item._id)"
+        class=" img-fluid"
+        alt="Movie Poster"
+        style="height: 200px;
+         width: 100%;"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{item?.title}}</h5>
+        <p class="card-text">
+          <strong>Release Date:</strong> {{item?.releaseDate}}<br />
+          <strong>Genre:</strong> <span class="genre fw-bold">{{item?.genre}}</span
+          ><br />
+          <strong>Rating:</strong> <span class="rating">⭐⭐⭐⭐⭐</span>
+        </p>
+        
+        <a class="btn btn-danger w-100" (click)="getMovieDetails(item._id)">Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>
