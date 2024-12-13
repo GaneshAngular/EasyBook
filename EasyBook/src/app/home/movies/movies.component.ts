@@ -9,45 +9,48 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './movies.component.html',
-  styleUrl: './movies.component.css'
+  styleUrl: './movies.component.css',
 })
 export class MoviesComponent {
+  movies: any[] = [];
+  cityList: any[] = city;
+  city: string = '';
+  constructor(private movieService: MovieService, private router: Router) {
+    movieService.city.asObservable().subscribe((data) => {
+      this.city = data;
+      console.log(this.city);
 
+      this.getMoviesByCity();
+    });
+  }
 
-  movies:any[]=[]
-   cityList:any[]=city
-   city:string=''
-   constructor(private movieService:MovieService,private router:Router){
-    movieService.city.asObservable().subscribe(data=>{
-      this.city=data;
-       this.getMoviesByCity()
- 
-    })
-   }
-    
-   getMovies(){
-    this.movieService.getMovies().subscribe((data:any)=>{
-       this.movies=data;
-     })
-   }
-   getMoviesByCity(){
-    this.movieService.getMoviesByCity(this.city).subscribe((data:any)=>{
-       this.movies=data;
-     })
-   }
+  getMovies() {
+    this.movieService.getMovies().subscribe((data: any) => {
+      this.movies = data;
+    });
+  }
+  getMoviesByCity() {
+    this.movieService.getMoviesByCity(this.city).subscribe(
+      (data: any) => {
+        console.log(data.length);
+        this.movies = data;
+      },
+      (error) => {
+        console.log(error.error.text);
+      }
+    );
+  }
 
-   setCity(city:string){
-    localStorage.setItem('city',city)
-    this.movieService.city.next(city)
-    
-    
-   }
+  setCity(city: string) {
+    this.movieService.city.next(city);
+  }
 
-   getMovieDetails(id:string) {
-        this.router.navigate(['user/movies/'+id])
-    }
-
-
+  getMovieDetails(id: string) {
+    this.router.navigate(['user/movies/' + id]);
+  }
+  ngOnDestroy(): void {
+    localStorage.setItem('city', this.city);
+  }
 }

@@ -31,7 +31,7 @@ const getMoviesByCity=async(req,res)=>{
     //    const movies = await Promise.all(moviePromises);
          return res.send(ids)
      }
-    shows.length==0&& res.send("no Movies screenings available")
+    shows.length==0&& res.send([])
     }
 
     

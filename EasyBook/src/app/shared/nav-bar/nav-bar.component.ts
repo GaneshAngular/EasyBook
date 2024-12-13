@@ -25,7 +25,11 @@ export class NavBarComponent {
   } 
 
   setCity(){
-      localStorage.setItem('city',this.city)
+     
       this.movieService.city.next(this.city)
+    }
+
+    ngOnDestroy(): void {
+      localStorage.setItem('city',this.city)
     }
 }

@@ -11,6 +11,9 @@
         </div>
       </div>
   <div class="row gap-3">
+    <div class="col-md-12">
+      <h1> <span *ngIf="!movies.length">No</span> Movies in {{city}}</h1>
+    </div>
     <div *ngFor="let item of movies" class="card col-md-3 col-sm-3 " >
       <img
         src="{{item?.poster}}"
